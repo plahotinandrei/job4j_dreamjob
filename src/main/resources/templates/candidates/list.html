@@ -6,31 +6,45 @@
     <link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
     <script th:src="@{/js/code.jquery.com_jquery-3.7.0.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
-    <title>Кандидаты</title>
+    <title>Список кандидатов</title>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Описание</th>
-                <th scope="col">Зарегистрирован</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="candidate: ${candidates}">
-                <td th:text="${candidate.id}"></td>
-                <td th:text="${candidate.name}"></td>
-                <td th:text="${candidate.description}"></td>
-                <td th:text="${candidate.creationDate}"></td>
-            </tr>
-            </tbody>
-        </table>
+<body>
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Job4jDreamJob</a>
+            <div class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/">Главная</a>
+                    <a class="nav-item nav-link" th:href="@{/vacancies}">Вакансии</a>
+                    <a class="nav-item nav-link active" th:href="@{/candidates}">Кандидаты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Дата создания</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="candidate: ${candidates}">
+                    <td th:text="${candidate.id}" />
+                    <td th:text="${candidate.name}" />
+                    <td th:text="${candidate.description}"/>
+                    <td th:text="${candidate.creationDate}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 </body>
 </html>
