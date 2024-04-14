@@ -19,12 +19,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "Высшее образование", LocalDateTime.now(), true, 1));
-        save(new Vacancy(0, "Junior Java Developer", "1 год опыта работы", LocalDateTime.now(), true, 1));
-        save(new Vacancy(0, "Junior+ Java Developer", "1-3 года опыта работы", LocalDateTime.now(), true, 1));
-        save(new Vacancy(0, "Middle Java Developer", "Опыт работы от 3х лет", LocalDateTime.now(), true, 1));
-        save(new Vacancy(0, "Middle+ Java Developer", "Опыт работы от 3х лет", LocalDateTime.now(), true, 1));
-        save(new Vacancy(0, "Senior Java Developer", "Опыт работы от 6х лет", LocalDateTime.now(), true, 1));
+        save(new Vacancy(0, "Intern Java Developer", "Высшее образование", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(0, "Junior Java Developer", "1 год опыта работы", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(0, "Junior+ Java Developer", "1-3 года опыта работы", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(0, "Middle Java Developer", "Опыт работы от 3х лет", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(0, "Middle+ Java Developer", "Опыт работы от 3х лет", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(0, "Senior Java Developer", "Опыт работы от 6х лет", LocalDateTime.now(), true, 1, 0));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
                 (id, oldVacancy) -> new Vacancy(
                         oldVacancy.getId(), vacancy.getTitle(),
                         vacancy.getDescription(), vacancy.getCreationDate(),
-                        vacancy.getVisible(), vacancy.getCityId()
+                        vacancy.getVisible(), vacancy.getCityId(), vacancy.getFileId()
                 )) != null;
     }
 
