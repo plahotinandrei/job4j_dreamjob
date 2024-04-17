@@ -32,15 +32,11 @@ public class Sql2oVacancyRepositoryTest {
         var url = properties.getProperty("datasource.url");
         var username = properties.getProperty("datasource.username");
         var password = properties.getProperty("datasource.password");
-
         var configuration = new DatasourceConfiguration();
         var datasource = configuration.connectionPool(url, username, password);
         var sql2o = configuration.databaseClient(datasource);
-
         sql2oVacancyRepository = new Sql2oVacancyRepository(sql2o);
         sql2oFileRepository = new Sql2oFileRepository(sql2o);
-
-        // нужно сохранить хотя бы один файл, т.к. Vacancy от него зависит
         file = new File("test", "test");
         sql2oFileRepository.save(file);
     }

@@ -32,14 +32,11 @@ class Sql2oCandidateRepositoryTest {
         var url = properties.getProperty("datasource.url");
         var username = properties.getProperty("datasource.username");
         var password = properties.getProperty("datasource.password");
-
         var configuration = new DatasourceConfiguration();
         var datasource = configuration.connectionPool(url, username, password);
         var sql2o = configuration.databaseClient(datasource);
-
         sql2oCandidateRepository = new Sql2oCandidateRepository(sql2o);
         sql2oFileRepository = new Sql2oFileRepository(sql2o);
-
         file = new File("test", "test");
         sql2oFileRepository.save(file);
     }
