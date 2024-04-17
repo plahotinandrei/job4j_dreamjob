@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="/">Job4jDreamJob</a>
             <div class="collapse navbar-collapse">
-                <div class="navbar-nav">
+                <div class="navbar-nav m-auto">
                     <a
                             class="nav-item nav-link"
                             th:classappend="${#strings.equals(#httpServletRequest.getRequestURI(), '/') ? 'active' : ''}"
@@ -38,6 +38,14 @@
                             th:href="@{/candidates/create}"
                     >
                         Создать резюме
+                    </a>
+                </div>
+                <div class="d-flex">
+                    <a
+                            class="nav-link text-secondary"
+                            th:classappend="${#strings.equals(#httpServletRequest.getRequestURI(), '/users/register') ? 'active' : ''}"
+                            th:href="@{/users/register}">
+                        Регистрация
                     </a>
                 </div>
             </div>
