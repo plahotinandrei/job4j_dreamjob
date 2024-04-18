@@ -47,6 +47,12 @@
                             th:href="@{/users/register}">
                         Регистрация
                     </a>
+                    <a
+                            class="nav-link text-secondary"
+                            th:classappend="${#strings.equals(#httpServletRequest.getRequestURI(), '/users/login') ? 'active' : ''}"
+                            th:href="@{/users/login}">
+                        Войти
+                    </a>
                 </div>
             </div>
         </div>
