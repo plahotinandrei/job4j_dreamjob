@@ -29,9 +29,8 @@ public class UserController {
         boolean isRegistered = userService.save(user).isPresent();
         if (isRegistered) {
             return "redirect:/";
-        } else {
-            model.addAttribute("message", "Пользователь с таким email уже существует");
-            return "errors/404";
         }
+        model.addAttribute("message", "Пользователь с таким email уже существует");
+        return "users/register";
     }
 }
