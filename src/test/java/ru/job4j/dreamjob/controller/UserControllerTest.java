@@ -8,9 +8,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.ui.ConcurrentModel;
 import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.service.UserService;
-
 import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -34,14 +32,14 @@ class UserControllerTest {
     }
 
     @Test
-    public void whenPostRegisterUserThenGetPageVacancies() {
+    public void whenPostRegisterUserThenGetMainPage() {
         var userExpected = new User(1, "user@mail.ru", "user", "password");
         var userArgumentCaptor = ArgumentCaptor.forClass(User.class);
         when(userService.save(userArgumentCaptor.capture())).thenReturn(Optional.of(userExpected));
         var model = new ConcurrentModel();
         var view = userController.register(userExpected, model);
         var actualUser = userArgumentCaptor.getValue();
-        assertThat(view).isEqualTo("redirect:/vacancies");
+        assertThat(view).isEqualTo("redirect:/");
         assertThat(actualUser).isEqualTo(userExpected);
     }
 
